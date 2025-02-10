@@ -126,3 +126,30 @@ void display_refresh_segments(){
 	display_send(displayData[3]);
 	display_stop();
 }
+
+const uint8_t digitMap[] = {
+	0x3f, //0 -> 0
+	0x06, //1 -> 0
+	0x5b, //2 -> 0
+	0x4f, //3 -> 0
+	0x66, //4 -> 0
+	0x6d, //5 -> 0
+	0x7d, //6 -> 0
+	0x07, //7 -> 0
+	0x7f, //8 -> 0
+	0x6f, //9 -> 0
+	0x77, //10 -> a
+	0x7c, //11 -> b
+	0x58, //12 -> c
+	0x5e, //13 -> d
+	0x79, //14 -> e
+	0x71, //15 -> f
+};
+
+uint8_t byte_to_segment(uint8_t data){
+	return digitMap[data];	
+}
+
+uint8_t minus_segment(){
+	return 0x40;
+}

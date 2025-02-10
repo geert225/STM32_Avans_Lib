@@ -1,0 +1,195 @@
+/*
+ * timer.h
+ *
+ *  Created on: 8 feb. 2025
+ *      Author: geert
+ */
+
+#ifndef REGISTERS_TIMER_H_
+#define REGISTERS_TIMER_H_
+
+#include "reg.h"
+
+#define TIM1_BASE_ADDR (0x40012C00)
+
+#define TIM2_BASE_ADDR (0x40000000)
+#define TIM3_BASE_ADDR (0x40000400)
+
+#define TIM6_BASE_ADDR (0x40001000)
+#define TIM7_BASE_ADDR (0x40001400)
+
+#define TIM14_BASE_ADDR (0x40002000)
+#define TIM15_BASE_ADDR (0x40014000)
+#define TIM16_BASE_ADDR (0x40014400)
+#define TIM17_BASE_ADDR (0x40014800)
+
+/* address offsets for specific timer registers */
+#define TIMx_CR1    (0x00) //control register 1
+#define TIMx_CR2    (0x04) //control register 2
+#define TIMx_SMCR   (0x08) //slave mode control register 
+#define TIMx_DIER   (0x0c) //DMA/interrupt enable register
+#define TIMx_SR     (0x10) //status register
+#define TIMx_EGR    (0x14) //event generation register
+#define TIMx_CCMR1  (0x18) //capture/compare mode register 1 
+#define TIMx_CCMR2  (0x1c) //capture/compare mode register 2
+#define TIMx_CCER   (0x20) //capture/compare enable register
+#define TIMx_CNT    (0x24) //counter
+#define TIMx_PSC    (0x28) //prescaler
+#define TIMx_ARR    (0x2c) //auto-reload register
+#define TIMx_RCR    (0x30) //repetition counter register
+#define TIMx_CCR1   (0x34) //capture/compare register 1
+#define TIMx_CCR2   (0x38) //capture/compare register 2
+#define TIMx_CCR3   (0x3c) //capture/compare register 3
+#define TIMx_CCR4   (0x40) //capture/compare register 4
+#define TIMx_BDTR   (0x44) //break and dead-time register
+#define TIMx_DCR    (0x48) //DMA control register
+#define TIMx_DMAR   (0x4c) //DMA address for full transfer
+#define TIMx_OR     (0x50) //option register
+
+//registers for timer 1
+#define TIM1_CR1    REG(TIM1_BASE_ADDR + TIMx_CR1)
+#define TIM1_CR2    REG(TIM1_BASE_ADDR + TIMx_CR2)
+#define TIM1_SMCR   REG(TIM1_BASE_ADDR + TIMx_SMCR)
+#define TIM1_DIER   REG(TIM1_BASE_ADDR + TIMx_DIER)
+#define TIM1_SR     REG(TIM1_BASE_ADDR + TIMx_SR)
+#define TIM1_EGR    REG(TIM1_BASE_ADDR + TIMx_EGR)
+#define TIM1_CCMR1  REG(TIM1_BASE_ADDR + TIMx_CCMR1)
+#define TIM1_CCMR2  REG(TIM1_BASE_ADDR + TIMx_CCMR2)
+#define TIM1_CCER   REG(TIM1_BASE_ADDR + TIMx_CCER)
+#define TIM1_CNT    REG(TIM1_BASE_ADDR + TIMx_CNT)
+#define TIM1_PSC    REG(TIM1_BASE_ADDR + TIMx_PSC)
+#define TIM1_ARR    REG(TIM1_BASE_ADDR + TIMx_ARR)
+#define TIM1_RCR    REG(TIM1_BASE_ADDR + TIMx_RCR)
+#define TIM1_CCR1   REG(TIM1_BASE_ADDR + TIMx_CCR1)
+#define TIM1_CCR2   REG(TIM1_BASE_ADDR + TIMx_CCR2)
+#define TIM1_CCR3   REG(TIM1_BASE_ADDR + TIMx_CCR3)
+#define TIM1_CCR4   REG(TIM1_BASE_ADDR + TIMx_CCR4)
+#define TIM1_BDTR   REG(TIM1_BASE_ADDR + TIMx_BDTR)
+#define TIM1_DCR    REG(TIM1_BASE_ADDR + TIMx_DCR)
+#define TIM1_DMAR   REG(TIM1_BASE_ADDR + TIMx_DMAR)
+
+//registers for timer 2
+#define TIM2_CR1    REG(TIM2_BASE_ADDR + TIMx_CR1)
+#define TIM2_CR2    REG(TIM2_BASE_ADDR + TIMx_CR2)
+#define TIM2_SMCR   REG(TIM2_BASE_ADDR + TIMx_SMCR)
+#define TIM2_DIER   REG(TIM2_BASE_ADDR + TIMx_DIER)
+#define TIM2_SR     REG(TIM2_BASE_ADDR + TIMx_SR)
+#define TIM2_EGR    REG(TIM2_BASE_ADDR + TIMx_EGR)
+#define TIM2_CCMR1  REG(TIM2_BASE_ADDR + TIMx_CCMR1)
+#define TIM2_CCMR2  REG(TIM2_BASE_ADDR + TIMx_CCMR2)
+#define TIM2_CCER   REG(TIM2_BASE_ADDR + TIMx_CCER)
+#define TIM2_CNT    REG(TIM2_BASE_ADDR + TIMx_CNT)
+#define TIM2_PSC    REG(TIM2_BASE_ADDR + TIMx_PSC)
+#define TIM2_ARR    REG(TIM2_BASE_ADDR + TIMx_ARR)
+#define TIM2_CCR1   REG(TIM2_BASE_ADDR + TIMx_CCR1)
+#define TIM2_CCR2   REG(TIM2_BASE_ADDR + TIMx_CCR2)
+#define TIM2_CCR3   REG(TIM2_BASE_ADDR + TIMx_CCR3)
+#define TIM2_CCR4   REG(TIM2_BASE_ADDR + TIMx_CCR4)
+#define TIM2_DCR    REG(TIM2_BASE_ADDR + TIMx_DCR)
+#define TIM2_DMAR   REG(TIM2_BASE_ADDR + TIMx_DMAR)
+
+//registers for timer 3
+#define TIM3_CR1    REG(TIM3_BASE_ADDR + TIMx_CR1)
+#define TIM3_CR2    REG(TIM3_BASE_ADDR + TIMx_CR2)
+#define TIM3_SMCR   REG(TIM3_BASE_ADDR + TIMx_SMCR)
+#define TIM3_DIER   REG(TIM3_BASE_ADDR + TIMx_DIER)
+#define TIM3_SR     REG(TIM3_BASE_ADDR + TIMx_SR)
+#define TIM3_EGR    REG(TIM3_BASE_ADDR + TIMx_EGR)
+#define TIM3_CCMR1  REG(TIM3_BASE_ADDR + TIMx_CCMR1)
+#define TIM3_CCMR2  REG(TIM3_BASE_ADDR + TIMx_CCMR2)
+#define TIM3_CCER   REG(TIM3_BASE_ADDR + TIMx_CCER)
+#define TIM3_CNT    REG(TIM3_BASE_ADDR + TIMx_CNT)
+#define TIM3_PSC    REG(TIM3_BASE_ADDR + TIMx_PSC)
+#define TIM3_ARR    REG(TIM3_BASE_ADDR + TIMx_ARR)
+#define TIM3_CCR1   REG(TIM3_BASE_ADDR + TIMx_CCR1)
+#define TIM3_CCR2   REG(TIM3_BASE_ADDR + TIMx_CCR2)
+#define TIM3_CCR3   REG(TIM3_BASE_ADDR + TIMx_CCR3)
+#define TIM3_CCR4   REG(TIM3_BASE_ADDR + TIMx_CCR4)
+#define TIM3_DCR    REG(TIM3_BASE_ADDR + TIMx_DCR)
+#define TIM3_DMAR   REG(TIM3_BASE_ADDR + TIMx_DMAR)
+
+//registers for timer 6
+#define TIM6_CR1    REG(TIM6_BASE_ADDR + TIMx_CR1)
+#define TIM6_CR2    REG(TIM6_BASE_ADDR + TIMx_CR2)
+#define TIM6_SR     REG(TIM6_BASE_ADDR + TIMx_SR)
+#define TIM6_EGR    REG(TIM6_BASE_ADDR + TIMx_EGR)
+#define TIM6_CNT    REG(TIM6_BASE_ADDR + TIMx_CNT)
+#define TIM6_PSC    REG(TIM6_BASE_ADDR + TIMx_PSC)
+#define TIM6_ARR    REG(TIM6_BASE_ADDR + TIMx_ARR)
+
+//registers for timer 7
+#define TIM7_CR1    REG(TIM7_BASE_ADDR + TIMx_CR1)
+#define TIM7_CR2    REG(TIM7_BASE_ADDR + TIMx_CR2)
+#define TIM7_SR     REG(TIM7_BASE_ADDR + TIMx_SR)
+#define TIM7_EGR    REG(TIM7_BASE_ADDR + TIMx_EGR)
+#define TIM7_CNT    REG(TIM7_BASE_ADDR + TIMx_CNT)
+#define TIM7_PSC    REG(TIM7_BASE_ADDR + TIMx_PSC)
+#define TIM7_ARR    REG(TIM7_BASE_ADDR + TIMx_ARR)
+
+//registers for timer 14
+#define TIM14_CR1   REG(TIM14_BASE_ADDR + TIMx_CR1)
+#define TIM14_DIER  REG(TIM14_BASE_ADDR + TIMx_DIER)
+#define TIM14_SR    REG(TIM14_BASE_ADDR + TIMx_SR)
+#define TIM14_EGR   REG(TIM14_BASE_ADDR + TIMx_EGR)
+#define TIM14_CCMR1 REG(TIM14_BASE_ADDR + TIMx_CCMR1)
+#define TIM14_CCER  REG(TIM14_BASE_ADDR + TIMx_CCER)
+#define TIM14_CNT   REG(TIM14_BASE_ADDR + TIMx_CNT)
+#define TIM14_PSC   REG(TIM14_BASE_ADDR + TIMx_PSC)
+#define TIM14_ARR   REG(TIM14_BASE_ADDR + TIMx_ARR)
+#define TIM14_CCR1  REG(TIM14_BASE_ADDR + TIMx_CCR1)
+#define TIM14_OR    REG(TIM14_BASE_ADDR + TIMx_OR)
+
+//registers for timer 15
+#define TIM15_CR1   REG(TIM15_BASE_ADDR + TIMx_CR1)
+#define TIM15_CR2   REG(TIM15_BASE_ADDR + TIMx_CR2)
+#define TIM15_SMCR  REG(TIM15_BASE_ADDR + TIMx_SMCR)
+#define TIM15_DIER  REG(TIM15_BASE_ADDR + TIMx_DIER)
+#define TIM15_SR    REG(TIM15_BASE_ADDR + TIMx_SR)
+#define TIM15_EGR   REG(TIM15_BASE_ADDR + TIMx_EGR)
+#define TIM15_CCMR1 REG(TIM15_BASE_ADDR + TIMx_CCMR1)
+#define TIM15_CCER  REG(TIM15_BASE_ADDR + TIMx_CCER)
+#define TIM15_CNT   REG(TIM15_BASE_ADDR + TIMx_CNT)
+#define TIM15_PSC   REG(TIM15_BASE_ADDR + TIMx_PSC)
+#define TIM15_ARR   REG(TIM15_BASE_ADDR + TIMx_ARR)
+#define TIM15_RCR   REG(TIM15_BASE_ADDR + TIMx_RCR)
+#define TIM15_CCR1  REG(TIM15_BASE_ADDR + TIMx_CCR1)
+#define TIM15_CCR2  REG(TIM15_BASE_ADDR + TIMx_CCR2)
+#define TIM15_BDTR  REG(TIM15_BASE_ADDR + TIMx_BDTR)
+#define TIM15_DCR   REG(TIM15_BASE_ADDR + TIMx_DCR)
+#define TIM15_DMAR  REG(TIM15_BASE_ADDR + TIMx_DMAR)
+
+//registers for timer 16
+#define TIM16_CR1   REG(TIM16_BASE_ADDR + TIMx_CR1)
+#define TIM16_CR2   REG(TIM16_BASE_ADDR + TIMx_CR2)
+#define TIM16_DIER  REG(TIM16_BASE_ADDR + TIMx_DIER)
+#define TIM16_SR    REG(TIM16_BASE_ADDR + TIMx_SR)
+#define TIM16_EGR   REG(TIM16_BASE_ADDR + TIMx_EGR)
+#define TIM16_CCMR1 REG(TIM16_BASE_ADDR + TIMx_CCMR1)
+#define TIM16_CCER  REG(TIM16_BASE_ADDR + TIMx_CCER)
+#define TIM16_CNT   REG(TIM16_BASE_ADDR + TIMx_CNT)
+#define TIM16_PSC   REG(TIM16_BASE_ADDR + TIMx_PSC)
+#define TIM16_ARR   REG(TIM16_BASE_ADDR + TIMx_ARR)
+#define TIM16_RCR   REG(TIM16_BASE_ADDR + TIMx_RCR)
+#define TIM16_CCR1  REG(TIM16_BASE_ADDR + TIMx_CCR1)
+#define TIM16_BDTR  REG(TIM16_BASE_ADDR + TIMx_BDTR)
+#define TIM16_DCR   REG(TIM16_BASE_ADDR + TIMx_DCR)
+#define TIM16_DMAR  REG(TIM16_BASE_ADDR + TIMx_DMAR)
+
+//registers for timer 17
+#define TIM17_CR1   REG(TIM17_BASE_ADDR + TIMx_CR1)
+#define TIM17_CR2   REG(TIM17_BASE_ADDR + TIMx_CR2)
+#define TIM17_DIER  REG(TIM17_BASE_ADDR + TIMx_DIER)
+#define TIM17_SR    REG(TIM17_BASE_ADDR + TIMx_SR)
+#define TIM17_EGR   REG(TIM17_BASE_ADDR + TIMx_EGR)
+#define TIM17_CCMR1 REG(TIM17_BASE_ADDR + TIMx_CCMR1)
+#define TIM17_CCER  REG(TIM17_BASE_ADDR + TIMx_CCER)
+#define TIM17_CNT   REG(TIM17_BASE_ADDR + TIMx_CNT)
+#define TIM17_PSC   REG(TIM17_BASE_ADDR + TIMx_PSC)
+#define TIM17_ARR   REG(TIM17_BASE_ADDR + TIMx_ARR)
+#define TIM17_RCR   REG(TIM17_BASE_ADDR + TIMx_RCR)
+#define TIM17_CCR1  REG(TIM17_BASE_ADDR + TIMx_CCR1)
+#define TIM17_BDTR  REG(TIM17_BASE_ADDR + TIMx_BDTR)
+#define TIM17_DCR   REG(TIM17_BASE_ADDR + TIMx_DCR)
+#define TIM17_DMAR  REG(TIM17_BASE_ADDR + TIMx_DMAR)
+
+#endif /* REGISTERS_TIMER_H_ */

@@ -55,23 +55,3 @@ void gpio_set_alternate_function(register_t port, uint16_t pins, gpio_alternate_
         REG(port + GPIOx_AFRH) |= ((function & 0x0f) << offset);
     }
 }
-
-inline uint16_t gpio_read(register_t port, uint16_t pins){
-	return(REG(port + GPIOx_IDR) & pins);
-}
-
-void gpio_write(register_t port, uint16_t pins, bool value){
-	BITS_WRITE(REG(port + GPIOx_ODR), pins, value);
-}
-
-inline void gpio_set(register_t port, uint16_t pins){
-	BITS_SET(REG(port + GPIOx_ODR), pins);
-}
-
-inline void gpio_reset(register_t port, uint16_t pins){
-	BITS_RESET(REG(port + GPIOx_ODR), pins);
-}
-
-inline void gpio_toggle(register_t port, uint16_t pins){
-	BITS_TOGGLE(REG(port + GPIOx_ODR), pins);
-}

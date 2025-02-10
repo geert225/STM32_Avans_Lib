@@ -19,4 +19,8 @@ void display_toggle_dot();
 void display_set_segment(int segment, uint8_t value);
 void display_refresh_segments();
 
+
+uint8_t minus_segment();
+uint8_t byte_to_segment(uint8_t data);
+
 #endif /* DRIVERS_DISPLAY_DISPLAY_H_ */

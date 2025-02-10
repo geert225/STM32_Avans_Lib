@@ -34,6 +34,6 @@ time_t core_clock_get_time(){
 void core_clock_delay_cycles(int cycles){
 	int i;
 	for (i = 0; i < cycles; ++i) {
-		asm("nop");
+		asm volatile("nop");
 	}
 }
