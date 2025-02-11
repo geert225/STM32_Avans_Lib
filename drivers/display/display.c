@@ -128,22 +128,22 @@ void display_refresh_segments(){
 }
 
 const uint8_t digitMap[] = {
-	0x3f, //0 -> 0
-	0x06, //1 -> 0
-	0x5b, //2 -> 0
-	0x4f, //3 -> 0
-	0x66, //4 -> 0
-	0x6d, //5 -> 0
-	0x7d, //6 -> 0
-	0x07, //7 -> 0
-	0x7f, //8 -> 0
-	0x6f, //9 -> 0
-	0x77, //10 -> a
-	0x7c, //11 -> b
-	0x58, //12 -> c
-	0x5e, //13 -> d
-	0x79, //14 -> e
-	0x71, //15 -> f
+	DISPLAY_SYMBOL_0, //0 -> 0
+	DISPLAY_SYMBOL_1, //1 -> 0
+	DISPLAY_SYMBOL_2, //2 -> 0
+	DISPLAY_SYMBOL_3, //3 -> 0
+	DISPLAY_SYMBOL_4, //4 -> 0
+	DISPLAY_SYMBOL_5, //5 -> 0
+	DISPLAY_SYMBOL_6, //6 -> 0
+	DISPLAY_SYMBOL_7, //7 -> 0
+	DISPLAY_SYMBOL_8, //8 -> 0
+	DISPLAY_SYMBOL_9, //9 -> 0
+	DISPLAY_SYMBOL_A, //10 -> a
+	DISPLAY_SYMBOL_B, //11 -> b
+	DISPLAY_SYMBOL_C, //12 -> c
+	DISPLAY_SYMBOL_D, //13 -> d
+	DISPLAY_SYMBOL_E, //14 -> e
+	DISPLAY_SYMBOL_F, //15 -> f
 };
 
 uint8_t byte_to_segment(uint8_t data){
@@ -151,5 +151,5 @@ uint8_t byte_to_segment(uint8_t data){
 }
 
 uint8_t minus_segment(){
-	return 0x40;
+	return DISPLAY_SYMBOL_MIN;
 }

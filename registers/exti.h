@@ -1,5 +1,5 @@
 /*
- * adc.h
+ * exti.h
  *
  *  Created on: 10 feb. 2025
  *      Author: geert

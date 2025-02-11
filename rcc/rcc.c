@@ -129,11 +129,11 @@ void rcc_pll_set_multiplier(uint32_t mul){
     RCC_CFGR = (RCC_CFGR & ~(BIT(18) | BIT(19) | BIT(20) | BIT(21))) | (mul << 18);
 }   
 
-void rcc_ppre_set(uint32_t ppre){
+void rcc_ppre_set(rcc_div_ppre_clken_t ppre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(8) | BIT(9) | BIT(10))) | ppre;
 }
 
-void rcc_hpre_set(uint32_t hpre){
+void rcc_hpre_set(rcc_div_hpre_clken_t hpre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(4) | BIT(5) | BIT(6) | BIT(7))) | hpre;
 }
 
