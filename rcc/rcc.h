@@ -110,11 +110,11 @@ void rcc_clock_enable(rcc_clock_t clock);
 void rcc_clock_disable(rcc_clock_t clock);
 bool rcc_clock_ready(rcc_clock_t clock);
 
-void rcc_pll_set_clock_source(rcc_clock_t osc, bool hsiDiv2);
+void rcc_pll_set_clock_source(rcc_clock_t clock, bool hsiDiv2);
 void rcc_pll_set_multiplier(uint32_t mul);
 
-void rcc_pclk_set(rcc_pclk_div_t ppre);
-void rcc_hclk_set(rcc_hclk_div_t hpre);
+void rcc_pclk_div_set(rcc_pclk_div_t ppre);
+void rcc_hclk_div_set(rcc_hclk_div_t hpre);
 void rcc_prediv_set(uint32_t prediv);
 
 void rcc_rtc_set_clock_source(rcc_clock_t clock); //TODO: functie nog niet klaar!

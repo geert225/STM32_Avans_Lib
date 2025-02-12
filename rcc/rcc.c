@@ -137,11 +137,11 @@ void rcc_pll_set_multiplier(uint32_t mul){
     RCC_CFGR = (RCC_CFGR & ~(BIT(18) | BIT(19) | BIT(20) | BIT(21))) | (mul << 18);
 }   
 
-void rcc_pclk_set(rcc_pclk_div_t ppre){
+void rcc_pclk_div_set(rcc_pclk_div_t ppre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(8) | BIT(9) | BIT(10))) | ppre;
 }
 
-void rcc_hclk_set(rcc_hclk_div_t hpre){
+void rcc_hclk_div_set(rcc_hclk_div_t hpre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(4) | BIT(5) | BIT(6) | BIT(7))) | hpre;
 }
 
@@ -197,8 +197,8 @@ void rcc_clock_setup_hsi_48mhz(){
     while(!rcc_clock_ready(RCC_CLOCK_HSI));
     rcc_system_set_clock_source(RCC_CLOCK_HSI);
 
-    rcc_hclk_set(RCC_HCLK_DIV_0);
-    rcc_pclk_set(RCC_PCLK_DIV_0);
+    rcc_hclk_div_set(RCC_HCLK_DIV_0);
+    rcc_pclk_div_set(RCC_PCLK_DIV_0);
 
     flash_prefetch_enable();
     flash_wait_state_24_48mhz();
