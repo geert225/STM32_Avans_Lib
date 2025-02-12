@@ -10,7 +10,7 @@
 
 #include "reg.h"
 
-#define EXTI_BASE_ADDR (0x40010000)
+#define EXTI_BASE_ADDR (0x40010400)
 
 /* address offset for specific adc registers*/
 #define EXTI_IMR    REG(EXTI_BASE_ADDR + 0x00) //Interrupt mask register 

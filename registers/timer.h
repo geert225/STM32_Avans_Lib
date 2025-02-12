@@ -111,6 +111,7 @@
 //registers for timer 6
 #define TIM6_CR1    REG(TIM6_BASE_ADDR + TIMx_CR1)
 #define TIM6_CR2    REG(TIM6_BASE_ADDR + TIMx_CR2)
+#define TIM6_DIER   REG(TIM6_BASE_ADDR + TIMx_DIER)
 #define TIM6_SR     REG(TIM6_BASE_ADDR + TIMx_SR)
 #define TIM6_EGR    REG(TIM6_BASE_ADDR + TIMx_EGR)
 #define TIM6_CNT    REG(TIM6_BASE_ADDR + TIMx_CNT)
@@ -120,6 +121,7 @@
 //registers for timer 7
 #define TIM7_CR1    REG(TIM7_BASE_ADDR + TIMx_CR1)
 #define TIM7_CR2    REG(TIM7_BASE_ADDR + TIMx_CR2)
+#define TIM7_DIER   REG(TIM7_BASE_ADDR + TIMx_DIER)
 #define TIM7_SR     REG(TIM7_BASE_ADDR + TIMx_SR)
 #define TIM7_EGR    REG(TIM7_BASE_ADDR + TIMx_EGR)
 #define TIM7_CNT    REG(TIM7_BASE_ADDR + TIMx_CNT)
