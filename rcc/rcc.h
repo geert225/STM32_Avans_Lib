@@ -68,14 +68,14 @@ typedef enum {
 } rcc_apb1_clken_t;
 
 typedef enum {
-    RCC_OSC_HSI14,
-    RCC_OSC_HSI, 
-    RCC_OSC_HSE, 
-    RCC_OSC_PLL, 
-    RCC_OSC_LSI, 
-    RCC_OSC_LSE, 
-    RCC_OSC_HSI48
-} rcc_osc_t;
+    RCC_CLOCK_HSI14,
+    RCC_CLOCK_HSI, 
+    RCC_CLOCK_HSE, 
+    RCC_CLOCK_PLL, 
+    RCC_CLOCK_LSI, 
+    RCC_CLOCK_LSE, 
+    RCC_CLOCK_HSI48
+} rcc_clock_t;
 
 typedef enum {
     RCC_PCLK_DIV_0 = 0,
@@ -83,7 +83,7 @@ typedef enum {
     RCC_PCLK_DIV_4 = 0x500,
     RCC_PCLK_DIV_8 = 0x600,
     RCC_PCLK_DIV_16 = 0x700
-} rcc_div_ppre_clken_t;
+} rcc_pclk_div_t;
 
 typedef enum {
     RCC_HCLK_DIV_0 = 0,
@@ -95,7 +95,7 @@ typedef enum {
     RCC_HCLK_DIV_128 = 0xd0,
     RCC_HCLK_DIV_256 = 0xe0,
     RCC_HCLK_DIV_512 = 0xf0
-} rcc_div_hpre_clken_t;
+} rcc_hclk_div_t;
 
 void rcc_ahb_clock_enable(uint32_t clken);
 void rcc_ahb_clock_disable(uint32_t clken);
@@ -106,22 +106,22 @@ void rcc_apb2_clock_disable(uint32_t clken);
 void rcc_apb1_clock_enable(uint32_t clken);
 void rcc_apb1_clock_disable(uint32_t clken);
 
-void rcc_osc_enable(rcc_osc_t osc);
-void rcc_osc_disable(rcc_osc_t osc);
-bool rcc_osc_ready(rcc_osc_t osc);
+void rcc_clock_enable(rcc_clock_t clock);
+void rcc_clock_disable(rcc_clock_t clock);
+bool rcc_clock_ready(rcc_clock_t clock);
 
-void rcc_pll_set_clock_source(rcc_osc_t osc, bool hsiDiv2);
+void rcc_pll_set_clock_source(rcc_clock_t osc, bool hsiDiv2);
 void rcc_pll_set_multiplier(uint32_t mul);
 
-void rcc_ppre_set(rcc_div_ppre_clken_t ppre);
-void rcc_hpre_set(rcc_div_hpre_clken_t hpre);
+void rcc_pclk_set(rcc_pclk_div_t ppre);
+void rcc_hclk_set(rcc_hclk_div_t hpre);
 void rcc_prediv_set(uint32_t prediv);
 
-void rcc_rtc_set_clock_source(rcc_osc_t osc); //TODO: functie nog niet klaar!
+void rcc_rtc_set_clock_source(rcc_clock_t clock); //TODO: functie nog niet klaar!
 void rcc_rtc_clock_enable();
 void rcc_rtc_clock_disable();
 
-void rcc_system_set_clock_source(rcc_osc_t osc);
+void rcc_system_set_clock_source(rcc_clock_t clock);
 
 void rcc_clock_setup_hsi_48mhz();
 

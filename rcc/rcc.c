@@ -40,89 +40,89 @@ void rcc_apb1_clock_disable(uint32_t clken){
     RCC_APB1ENR &= ~(clken);
 }
 
-void rcc_osc_enable(rcc_osc_t osc){
+void rcc_clock_enable(rcc_clock_t clock){
     switch (osc) {
-        case RCC_OSC_HSI48:
+        case RCC_CLOCK_HSI48:
             RCC_CR2 |= BIT(16);
             break;
-        case RCC_OSC_HSI14:
+        case RCC_CLOCK_HSI14:
             RCC_CR2 |= BIT(0);
             break;
-        case RCC_OSC_HSI:
+        case RCC_CLOCK_HSI:
             RCC_CR |= BIT(0);
             break;
-        case RCC_OSC_HSE:
+        case RCC_CLOCK_HSE:
             RCC_CR |= BIT(16);
             break;
-        case RCC_OSC_LSE:
+        case RCC_CLOCK_LSE:
             RCC_BDCR |= BIT(0);
             break;
-        case RCC_OSC_LSI:
+        case RCC_CLOCK_LSI:
             RCC_CSR |= BIT(0);
             break;
-        case RCC_OSC_PLL:
+        case RCC_CLOCK_PLL:
             RCC_CR |= BIT(24);
             break;
 	}
 }
 
-void rcc_osc_disable(rcc_osc_t osc){
+void rcc_clock_disable(rcc_clock_t clock){
     switch (osc) {
-        case RCC_OSC_HSI48:
+        case RCC_CLOCK_HSI48:
             RCC_CR2 &= ~BIT(16);
             break;
-        case RCC_OSC_HSI14:
+        case RCC_CLOCK_HSI14:
             RCC_CR2 &= ~BIT(0);
             break;
-        case RCC_OSC_HSI:
+        case RCC_CLOCK_HSI:
             RCC_CR &= ~BIT(0);
             break;
-        case RCC_OSC_HSE:
+        case RCC_CLOCK_HSE:
             RCC_CR &= ~BIT(16);
             break;
-        case RCC_OSC_LSE:
+        case RCC_CLOCK_LSE:
             RCC_BDCR &= ~BIT(0);
             break;
-        case RCC_OSC_LSI:
+        case RCC_CLOCK_LSI:
             RCC_CSR &= ~BIT(0);
             break;
-        case RCC_OSC_PLL:
+        case RCC_CLOCK_PLL:
             RCC_CR &= ~BIT(24);
             break;
 	}
 }
 
-bool rcc_osc_ready(rcc_osc_t osc){
+bool rcc_clock_ready(rcc_clock_t clock){
     switch (osc) {
-	case RCC_OSC_HSI48:
+	case RCC_CLOCK_HSI48:
 		return RCC_CR2 & BIT(17);
-	case RCC_OSC_HSI14:
+	case RCC_CLOCK_HSI14:
 		return RCC_CR2 & BIT(1);
-	case RCC_OSC_HSI:
+	case RCC_CLOCK_HSI:
 		return RCC_CR & BIT(1);
-	case RCC_OSC_HSE:
+	case RCC_CLOCK_HSE:
 		return RCC_CR & BIT(17);
-	case RCC_OSC_PLL:
+	case RCC_CLOCK_PLL:
 		return RCC_CR & BIT(25);
-	case RCC_OSC_LSE:
+	case RCC_CLOCK_LSE:
 		return RCC_BDCR & BIT(1);
-	case RCC_OSC_LSI:
+	case RCC_CLOCK_LSI:
 		return RCC_CSR & BIT(1);
 	}
 	return false;
 }
 
-void rcc_pll_set_clock_source(rcc_osc_t osc, bool hsiDiv2){
+void rcc_pll_set_clock_source(rcc_clock_t clock, bool hsiDiv2){
     uint32_t tempReg = RCC_CSR & ~(BIT(15) | BIT(16));
     switch (osc)
     {
-    case RCC_OSC_HSI:
+    case RCC_CLOCK_HSI:
         if(!hsiDiv2) tempReg |= BIT(15); 
         break;
-    case RCC_OSC_HSI48:
+    case RCC_CLOCK_HSI48:
         tempReg |= BIT(15) | BIT(16);
         break;
-    case RCC_OSC_HSE:
+    case RCC_CLOCK_HSE:
         tempReg |= BIT(16);
         break;
     default:
@@ -137,11 +137,11 @@ void rcc_pll_set_multiplier(uint32_t mul){
     RCC_CFGR = (RCC_CFGR & ~(BIT(18) | BIT(19) | BIT(20) | BIT(21))) | (mul << 18);
 }   
 
-void rcc_ppre_set(rcc_div_ppre_clken_t ppre){
+void rcc_pclk_set(rcc_pclk_div_t ppre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(8) | BIT(9) | BIT(10))) | ppre;
 }
 
-void rcc_hpre_set(rcc_div_hpre_clken_t hpre){
+void rcc_hclk_set(rcc_hclk_div_t hpre){
     RCC_CFGR = (RCC_CFGR & ~(BIT(4) | BIT(5) | BIT(6) | BIT(7))) | hpre;
 }
 
@@ -150,7 +150,7 @@ void rcc_prediv_set(uint32_t prediv){
     RCC_CSR = (RCC_CSR & ~(0xf)) | prediv;
 }
 
-void rcc_rtc_set_clock_source(rcc_osc_t osc){
+void rcc_rtc_set_clock_source(rcc_clock_t clock){
     //TODO:
 }
 
@@ -162,19 +162,19 @@ void rcc_rtc_clock_disable(){
     RCC_BDCR &= ~BIT(15);
 }
 
-void rcc_system_set_clock_source(rcc_osc_t osc){
+void rcc_system_set_clock_source(rcc_clock_t clock){
     uint32_t tempReg = RCC_CFGR & ~(BIT(0) | BIT(1));
     switch (osc) {
-        case RCC_OSC_HSI:
+        case RCC_CLOCK_HSI:
             tempReg |= 0;
             break;
-        case RCC_OSC_HSE:
+        case RCC_CLOCK_HSE:
             tempReg |= BIT(0);
             break;
-        case RCC_OSC_PLL:
+        case RCC_CLOCK_PLL:
             tempReg |= BIT(1);
             break;
-        case RCC_OSC_HSI48:
+        case RCC_CLOCK_HSI48:
             tempReg |= BIT(0) | BIT(1);
             break;
         default:
@@ -193,24 +193,24 @@ static void flash_wait_state_24_48mhz(){
 }
 
 void rcc_clock_setup_hsi_48mhz(){
-    rcc_osc_enable(RCC_OSC_HSI);
-    while(!rcc_osc_ready(RCC_OSC_HSI));
-    rcc_system_set_clock_source(RCC_OSC_HSI);
+    rcc_clock_enable(RCC_CLOCK_HSI);
+    while(!rcc_clock_ready(RCC_CLOCK_HSI));
+    rcc_system_set_clock_source(RCC_CLOCK_HSI);
 
-    rcc_hpre_set(RCC_HCLK_DIV_0);
-    rcc_ppre_set(RCC_PCLK_DIV_0);
+    rcc_hclk_set(RCC_HCLK_DIV_0);
+    rcc_pclk_set(RCC_PCLK_DIV_0);
 
     flash_prefetch_enable();
     flash_wait_state_24_48mhz();
 
     rcc_pll_set_multiplier(12);
-    rcc_pll_set_clock_source(RCC_OSC_HSI, true);
+    rcc_pll_set_clock_source(RCC_CLOCK_HSI, true);
 
     rcc_prediv_set(0);
 
-    rcc_osc_enable(RCC_OSC_PLL);
-    while(!rcc_osc_ready(RCC_OSC_PLL));
-    rcc_system_set_clock_source(RCC_OSC_PLL);
+    rcc_clock_enable(RCC_CLOCK_PLL);
+    while(!rcc_clock_ready(RCC_CLOCK_PLL));
+    rcc_system_set_clock_source(RCC_CLOCK_PLL);
 
     rcc_sys_freq = 48000000;
     rcc_apb_freq = rcc_sys_freq;
