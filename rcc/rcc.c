@@ -41,7 +41,7 @@ void rcc_apb1_clock_disable(uint32_t clken){
 }
 
 void rcc_clock_enable(rcc_clock_t clock){
-    switch (osc) {
+    switch (clock) {
         case RCC_CLOCK_HSI48:
             RCC_CR2 |= BIT(16);
             break;
@@ -67,7 +67,7 @@ void rcc_clock_enable(rcc_clock_t clock){
 }
 
 void rcc_clock_disable(rcc_clock_t clock){
-    switch (osc) {
+    switch (clock) {
         case RCC_CLOCK_HSI48:
             RCC_CR2 &= ~BIT(16);
             break;
@@ -93,7 +93,7 @@ void rcc_clock_disable(rcc_clock_t clock){
 }
 
 bool rcc_clock_ready(rcc_clock_t clock){
-    switch (osc) {
+    switch (clock) {
 	case RCC_CLOCK_HSI48:
 		return RCC_CR2 & BIT(17);
 	case RCC_CLOCK_HSI14:
@@ -114,7 +114,7 @@ bool rcc_clock_ready(rcc_clock_t clock){
 
 void rcc_pll_set_clock_source(rcc_clock_t clock, bool hsiDiv2){
     uint32_t tempReg = RCC_CSR & ~(BIT(15) | BIT(16));
-    switch (osc)
+    switch (clock)
     {
     case RCC_CLOCK_HSI:
         if(!hsiDiv2) tempReg |= BIT(15); 
@@ -164,7 +164,7 @@ void rcc_rtc_clock_disable(){
 
 void rcc_system_set_clock_source(rcc_clock_t clock){
     uint32_t tempReg = RCC_CFGR & ~(BIT(0) | BIT(1));
-    switch (osc) {
+    switch (clock) {
         case RCC_CLOCK_HSI:
             tempReg |= 0;
             break;
