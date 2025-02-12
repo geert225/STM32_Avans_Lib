@@ -8,6 +8,14 @@
 #include "rcc.h"
 #include "../registers/rcc.h"
 
+#define RCC_DEFAULT_SYS_FREQ 8000000
+#define RCC_DEFAULT_AHB_FREQ 8000000
+#define RCC_DEFAULT_APB_FREQ 8000000
+
+static volatile uint64_t rcc_sys_freq = RCC_DEFAULT_SYS_FREQ;
+static volatile uint64_t rcc_ahb_freq = RCC_DEFAULT_AHB_FREQ;
+static volatile uint64_t rcc_apb_freq = RCC_DEFAULT_APB_FREQ;
+
 void rcc_ahb_clock_enable(uint32_t clken){
     RCC_AHBENR |= (clken);
 }
@@ -203,4 +211,25 @@ void rcc_clock_setup_hsi_48mhz(){
     rcc_osc_enable(RCC_OSC_PLL);
     while(!rcc_osc_ready(RCC_OSC_PLL));
     rcc_system_set_clock_source(RCC_OSC_PLL);
+
+    rcc_sys_freq = 48000000;
+    rcc_apb_freq = rcc_sys_freq;
+    rcc_ahb_freq = rcc_sys_freq;
 }
+
+uint64_t rcc_get_sys_freq(){
+	return rcc_sys_freq;
+}
+
+uint64_t rcc_get_ahb_freq(){
+	return rcc_ahb_freq;
+}
+
+uint64_t rcc_get_apb1_freq(){
+	return rcc_apb_freq;
+}
+
+uint64_t rcc_get_apb2_freq(){
+	return rcc_apb_freq;
+}
+

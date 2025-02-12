@@ -125,4 +125,9 @@ void rcc_system_set_clock_source(rcc_osc_t osc);
 
 void rcc_clock_setup_hsi_48mhz();
 
+uint64_t rcc_get_sys_freq();
+uint64_t rcc_get_ahb_freq();
+uint64_t rcc_get_apb1_freq();
+uint64_t rcc_get_apb2_freq();
+
 #endif /* RCC_RCC_H_ */

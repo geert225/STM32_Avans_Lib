@@ -8,6 +8,7 @@
 #include "../core/clock.h"
 
 #include "../registers/systick.h"
+#include "../rcc/rcc.h"
 
 volatile static time_t ticks = 0;
 
@@ -18,7 +19,7 @@ void SysTick_Handler(){
 
 void core_clock_config(){
 	STK_CVR = 0; // clear counter
-	STK_RVR = (8000 - 1); //8mhz / 1000 = 8000 ticks per 1ms
+	STK_RVR = ((rcc_get_sys_freq() / 1000) - 1); //8mhz / 1000 = 8000 ticks per 1ms
 	STK_CSR |= BIT(2) | BIT(1) | BIT(0); //enable systick (bit 0), enable ISR (bit 1), use processor clock (bit 2)
 }
 
