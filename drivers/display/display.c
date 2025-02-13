@@ -80,6 +80,7 @@ void display_config(){
 void display_set_brightness(uint8_t brightness){
 	brightness &= 7;
 	if(displayBrightness == brightness) return;
+	displayBrightness = brightness;
 	displayon = true;
 	display_update_settings();
 }
