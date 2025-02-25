@@ -8,7 +8,7 @@
 #include "gpio.h"
 #include "../registers/gpio.h"
 
-void gpio_set_mode(register_t port, uint16_t pins, gpio_modes_t mode){
+void gpio_set_mode(stm_register_t port, uint16_t pins, gpio_modes_t mode){
     for (int i = 0; i < 16; i++)
     {
         if(!((pins >> i) & 1)) continue;
@@ -16,7 +16,7 @@ void gpio_set_mode(register_t port, uint16_t pins, gpio_modes_t mode){
     }
 }
 
-void gpio_set_input_settings(register_t port, uint16_t pins, gpio_input_type_t type){
+void gpio_set_input_settings(stm_register_t port, uint16_t pins, gpio_input_type_t type){
     for (int i = 0; i < 16; i++)
     {
     	if(!((pins >> i) & 1)) continue;
@@ -24,7 +24,7 @@ void gpio_set_input_settings(register_t port, uint16_t pins, gpio_input_type_t t
     }
 }
 
-void gpio_set_output_settings(register_t port, uint16_t pins, gpio_output_type_t type, gpio_output_speed_t speed){
+void gpio_set_output_settings(stm_register_t port, uint16_t pins, gpio_output_type_t type, gpio_output_speed_t speed){
     for (int i = 0; i < 16; i++)
     {
     	if(!((pins >> i) & 1)) continue;
@@ -34,7 +34,7 @@ void gpio_set_output_settings(register_t port, uint16_t pins, gpio_output_type_t
     }
 }
 
-void gpio_set_alternate_function(register_t port, uint16_t pins, gpio_alternate_function_t function){
+void gpio_set_alternate_function(stm_register_t port, uint16_t pins, gpio_alternate_function_t function){
     int offset;
 
     for (int i = 0; i < 8; i++)

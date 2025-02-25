@@ -19,7 +19,7 @@
 
 #define BITS_WRITE(var, bits, value) (value) ? (BITS_SET(var, bits)) : (BITS_RESET(var, bits))
 
-typedef uint32_t register_t;
-typedef uint64_t time_t;
+typedef uint32_t stm_register_t;
+typedef uint64_t time_ms_t;
 
 #endif /* COMMON_H_ */

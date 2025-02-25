@@ -76,10 +76,10 @@ typedef enum {
     GPIO_AF7 = 7
 } gpio_alternate_function_t;
 
-void gpio_set_mode(register_t port, uint16_t pins, gpio_modes_t mode);
-void gpio_set_input_settings(register_t port, uint16_t pins, gpio_input_type_t type);
-void gpio_set_output_settings(register_t port, uint16_t pins, gpio_output_type_t type, gpio_output_speed_t speed);
-void gpio_set_alternate_function(register_t port, uint16_t pins, gpio_alternate_function_t function);
+void gpio_set_mode(stm_register_t port, uint16_t pins, gpio_modes_t mode);
+void gpio_set_input_settings(stm_register_t port, uint16_t pins, gpio_input_type_t type);
+void gpio_set_output_settings(stm_register_t port, uint16_t pins, gpio_output_type_t type, gpio_output_speed_t speed);
+void gpio_set_alternate_function(stm_register_t port, uint16_t pins, gpio_alternate_function_t function);
 /*
 uint16_t gpio_read(register_t port, uint16_t pins);
 void gpio_write(register_t port, uint16_t pins, bool value);
@@ -89,23 +89,23 @@ void gpio_toggle(register_t port, uint16_t pins);
 */
 
 //static inline function will be optimezed if -O3 is selected to inline function calls (local copy)
-static inline uint16_t gpio_read(register_t port, uint16_t pins){
+static inline uint16_t gpio_read(stm_register_t port, uint16_t pins){
 	return(REG(port + GPIOx_IDR) & pins);
 }
 
-static inline void gpio_write(register_t port, uint16_t pins, bool value){
+static inline void gpio_write(stm_register_t port, uint16_t pins, bool value){
 	BITS_WRITE(REG(port + GPIOx_ODR), pins, value);
 }
 
-static inline void gpio_set(register_t port, uint16_t pins){
+static inline void gpio_set(stm_register_t port, uint16_t pins){
 	BITS_SET(REG(port + GPIOx_ODR), pins);
 }
 
-static inline void gpio_reset(register_t port, uint16_t pins){
+static inline void gpio_reset(stm_register_t port, uint16_t pins){
 	BITS_RESET(REG(port + GPIOx_ODR), pins);
 }
 
-static inline void gpio_toggle(register_t port, uint16_t pins){
+static inline void gpio_toggle(stm_register_t port, uint16_t pins){
 	BITS_TOGGLE(REG(port + GPIOx_ODR), pins);
 }
 

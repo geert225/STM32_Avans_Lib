@@ -10,7 +10,7 @@
 #include "../registers/systick.h"
 #include "../rcc/rcc.h"
 
-volatile static time_t ticks = 0;
+volatile static time_ms_t ticks = 0;
 
 //systick interrupt
 void SysTick_Handler(){
@@ -23,12 +23,12 @@ void core_clock_config(){
 	STK_CSR |= BIT(2) | BIT(1) | BIT(0); //enable systick (bit 0), enable ISR (bit 1), use processor clock (bit 2)
 }
 
-void core_clock_delay(time_t time){
-	time_t start = ticks;
+void core_clock_delay(time_ms_t time){
+	time_ms_t start = ticks;
 	while((start + time) > ticks);
 }
 
-time_t core_clock_get_time(){
+time_ms_t core_clock_get_time(){
 	return ticks;
 }
 
